@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ProteaApp</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <header>
+    <ul>
+      <li><%= link_to "home", "/" %></li>
+      <li><%= link_to '記事一覧',"/reports"%></li>
+      <% if session[:student_id] != nil %>
+        <li><%= link_to '記事投稿','/report/new'%></li>
+        <li><%= link_to "ログアウト", "/logout", method: :delete %></li>
+        <li><%= link_to "退会","/student/#{session[:student_id]}", method: :delete%></li>
+      <% else %>
+        <li><%= link_to "ログイン", "/login" %></li>
+        <li><%= link_to '新規登録', "/student" %></li>
+      <% end %>
+    </ul>
+  </header>
+    <%= yield %>
+  </body>
+</html>

@@ -1,0 +1,8 @@
+<h1>ログイン</h1>
+<%= form_with url: '/login', method: :post do |f| %>
+<%= f.label :mail %>
+<%= f.text_field :mail %>
+<%= f.label :password %>
+<%= f.password_field :password %>
+<%= f.submit "ログイン" %>
+<% end %>

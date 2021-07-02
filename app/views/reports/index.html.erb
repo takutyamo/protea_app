@@ -1,0 +1,11 @@
+<ul>
+<% @reports.each do |report| %>
+    <li>タイトル：<%= link_to report.title, "/report/#{report.id}" %>
+        投稿者： <%= report.student.name %>
+        <% if report.student.id == session[:student_id] %>
+        <%= link_to "編集", "/report/#{report.id}/edit" %>
+        <%= link_to "削除", "/report/#{report.id}", method: :delete %>
+        <% end %>
+    </li>
+<% end %>
+</ul>
